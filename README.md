@@ -48,9 +48,10 @@ Google BigQuery 활용을 위한 종합 가이드 및 실습 예제 모음집입
 - [빅쿼리 데이터폼 UI](빅쿼리%20데이터폼%20UI.md) - Dataform UI 활용 가이드
 - [빅쿼리 API 활용](빅쿼리%20API%20활용.md) - BigQuery API 프로그래밍
 
-### 마이그레이션
+### 마이그레이션 & 연동
 - [Oracle 스토어드 프로시저 이관 가이드](Oracle-스토어드-프로시저-이관-가이드.md) - Oracle에서 BigQuery로 이관
 - [Oracle Function BigQuery 이관 가이드](Oracle-Function-BigQuery-이관-가이드.md) - Oracle 함수 변환
+- [빅쿼리 DuckDB 연동](빅쿼리%20DuckDB%20연동.md) - DuckDB와 BigQuery 간 데이터 이관 및 연동
 
 ## 🛠 실습 예제
 
@@ -109,6 +110,7 @@ cd "파티션 예제"
 - **실무 중심**: 실제 업무에서 바로 활용할 수 있는 예제 제공
 - **포괄적 커버리지**: BigQuery의 거의 모든 기능을 다룸
 - **코드 예제**: SQL, Shell Script, Python, YAML 등 다양한 형태의 예제
+- **연동 가이드**: DuckDB, Oracle 등 다양한 시스템과의 연동 방법 제공
 - **최신 기능**: BigQuery의 최신 기능들을 반영
 
 ## 📋 사용법
@@ -126,6 +128,7 @@ bigquery-workbook/
 ├── CLAUDE.md                          # AI 어시스턴트를 위한 가이드
 ├── 빅쿼리 *.md                        # 26개 주제별 가이드 문서
 ├── Oracle-*-가이드.md                  # Oracle 마이그레이션 가이드
+├── 빅쿼리 DuckDB 연동.md              # DuckDB와 BigQuery 연동 가이드
 ├── 슬롯 예제/                         # 슬롯 관리 실습 (23개 파일)
 │   ├── *.sql                          # SQL 쿼리 예제
 │   ├── *.sh                           # Shell Script 예제
@@ -161,13 +164,22 @@ bq show --format=prettyjson dataset.table
 
 # 쿼리 실행 계획 확인
 bq query --dry_run --use_legacy_sql=false "SELECT * FROM table"
+
+# DuckDB 설치 및 기본 사용법
+pip install duckdb google-cloud-bigquery
+python -c "import duckdb; print('DuckDB 연동 준비 완료')"
 ```
 
 ### 유용한 리소스
 - [BigQuery 공식 문서](https://cloud.google.com/bigquery/docs)
 - [BigQuery 요금 계산기](https://cloud.google.com/products/calculator)
 - [BigQuery 샘플 데이터셋](https://cloud.google.com/bigquery/public-data)
+- [DuckDB 공식 문서](https://duckdb.org/docs/)
+- [DuckDB Python 클라이언트](https://duckdb.org/docs/api/python/overview)
 
 ---
 
-💡 **팁**: 처음 시작하신다면 [빅쿼리 슬롯](빅쿼리%20슬롯.md)과 [빅쿼리 파티션](빅쿼리%20파티션.md) 문서부터 읽어보시기를 권장합니다.
+💡 **팁**: 
+- **BigQuery 초보자**: [빅쿼리 슬롯](빅쿼리%20슬롯.md)과 [빅쿼리 파티션](빅쿼리%20파티션.md) 문서부터 시작하세요
+- **데이터 이관**: [빅쿼리 DuckDB 연동](빅쿼리%20DuckDB%20연동.md)으로 로컬 데이터를 클라우드로 효율적으로 이관하세요
+- **Oracle 마이그레이션**: Oracle 시스템에서 BigQuery로 전환할 때는 Oracle 관련 가이드를 참고하세요
